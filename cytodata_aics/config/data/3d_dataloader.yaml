@@ -1,6 +1,7 @@
 _target_: serotiny.datamodules.ManifestDatamodule
 
-path: /home/aicsuser/serotiny_data/ourdata.csv
+# path: /home/aicsuser/serotiny_data/ourdata.csv
+path: /home/aicsuser/working/cytodata-hackathon-base/mitocells_encoded.csv
 
 batch_size: 64
 num_workers: 6
@@ -10,9 +11,14 @@ loaders:
     column: CellId
     dtype: int
   class:
-    _target_: serotiny.io.dataframe.loaders.LoadColumn
-    column: cell_stage_encoded
-    dtype: int32
+    _target_: serotiny.io.dataframe.loaders.LoadClass
+    num_classes: 5
+    y_encoded_label: cell_stage_encoded
+    binary: false
+  # class:
+  #   _target_: serotiny.io.dataframe.loaders.LoadColumn
+  #   column: cell_stage_encoded
+  #   dtype: int
   image:
     _target_: serotiny.io.dataframe.loaders.LoadImage
     column: 3d_image
@@ -26,4 +32,3 @@ loaders:
       channels: ['bf']
     
 split_column: "split"
-
