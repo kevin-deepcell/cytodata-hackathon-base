@@ -21,14 +21,24 @@ network:
   _target_: torch.nn.Sequential
   _args_:
     - *conv_block
-    # - *conv_block
-    # - *conv_block
-    # - *conv_block
+    - *conv_block
+    - *conv_block
     - _target_: serotiny.networks.layers.Flatten
     - _target_: torch.nn.LazyLinear
-      out_features: 2
-    - _target_: torch.nn.Sigmoid
-    
+      out_features: 1024
+    - _target_: torch.nn.Linear
+      in_features: 1024
+      out_features: 1024
+    - _target_: torch.nn.Linear
+      in_features: 1024
+      out_features: 512
+    - _target_: torch.nn.Linear
+      in_features: 512
+      out_features: 256
+    - _target_: torch.nn.Linear
+      in_features: 256
+      out_features: 5
+    - _target_: torch.nn.Softmax
 loss:
   _target_: torch.nn.CrossEntropyLoss
   
