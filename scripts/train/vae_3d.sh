@@ -1,0 +1,1 @@
+serotiny train model=vae_3d_beta-20 data=team2_bf_vae_dataloader_3d_mitocells_filtered mlflow.experiment_name=tbd_task_1 mlflow.run_name=team_tbd_vae_3d_run_20221020_043713_bf_model0_mitocells_filtered_beta-20 trainer.gpus=[0] trainer.max_epochs=2000 ++trainer.enable_checkpointing=True &>team_tbd_vae_3d_run_20221020_043713_bf_model0_mitocells_filtered_beta-20_train0.out &
